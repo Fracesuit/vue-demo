@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<div id="vue_div">{{message}}</div>
+
+
+<div id="vue_div2" v-bind:title="message">
+    <span>鼠标悬停几秒钟查看此处动态绑定的提示信息</span>
+</div>
+
+<div id="vue_div3">
+    <p v-if="seen">现在你看到我了</p>
+
+</div>
+
+<div id="vue_div4">
+    <ol>
+        <li v-for="todo in todos"> {{todo.text}}</li>
+    </ol>
+</div>
+
+<div id="vue_div5">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage"></button>
+</div>
+
+
+<div id="vue_div6">
+    <p>{{message}}</p>
+    <input v-model="message">
+</div>
+
+<ol id="vue_ol7">
+    <!--v-bind:key="item.id"-->
+    <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+</ol>
+
+</body>
+
+
+<script type="text/javascript">
+
+
+    new Vue({
+        el: "#vue_div",
+        data: {
+            message: "hello world"
+        }
+    })
+
+
+    new Vue({
+        el: "#vue_div2",
+        data: {
+            message: "页面加载于 " + new Date().toLocaleString()
+        }
+    })
+
+    new Vue({
+        el: "#vue_div3",
+        data: {
+            seen: true
+        }
+    })
+    new Vue({
+        el: "#vue_div4",
+        data: {
+            todos: [
+                {"text": "dd1"},
+                {"text": "dd2"},
+                {"text": "dd3"}
+            ]
+        }
+    })
+
+    new Vue({
+        el: "#vue_div5",
+        data: {
+            message: "测 试 数 据"
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split(" ").reverse().join("hh");
+            }
+        }
+    })
+
+    new Vue({
+        el: "#vue_div6",
+        data: {
+            message: "ff"
+        }
+    })
+
+
+    /*   组件*/
+
+    Vue.component("todo-item", {
+        props: ['todo'],
+        template: '<li>{{todo.text}}</li>'
+    })
+
+    new Vue({
+        el: "#vue_ol7",
+        data: {
+            groceryList: [
+                {id: 1, "text": "dd1"},
+                {id: 2, "text": "dd2"},
+                {id: 3, "text": "dd3"}
+            ]
+        }
+    })
+
+</script>
+
+</html>
