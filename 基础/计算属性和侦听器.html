@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<div id="app" >
+    <p>{{obj.a}}</p>
+    <p> {{reverseData}}</p>
+    <p> {{loading}}</p>
+
+    <input v-model="obj.a">
+
+</div>
+
+</body>
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            obj: {
+                a: '123'
+            },
+            loading:''
+        },
+        computed: {
+            reverseData: function () {
+                return this.obj.a.split('').reverse();
+            }
+        },
+        watch:{
+            reverseData:function () {
+                this.loading='请稍等'
+               // this.reverseData='456';
+               // console.log("reverseData=="+this.reverseData);
+                this.getAnswer();
+            }
+        },
+        methods:{
+            getAnswer:function () {
+
+                this.loading="hhhhhhh"
+            }
+        }
+
+    })
+
+
+</script>
+
+</html>

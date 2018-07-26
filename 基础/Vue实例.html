@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<div id="app">{{obj.a}}</div>
+
+</body>
+<script type="text/javascript">
+
+    var obj = {a: 1}
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            data: obj
+        },
+        beforeCreate: function () {
+            console.log("beforecreated")
+        },
+        created: function () {/*生命周期1*/
+            console.log("created")
+
+        },
+        beforeMount() {
+            console.log("beforeMount")
+        },
+        mounted() {/*这是es6写法*/
+            /*生命周期2*/
+            console.log("mounted")
+        },
+        beforeUpdate:function () {
+            console.log("beforeUpdate")
+        },
+        updated:function () {
+            console.log("updated")
+        },
+        beforeDestory:function () {
+            console.log("beforeDestory")
+        },
+        destoryed:function () {
+            console.log("destoryed")
+        }
+
+    })
+
+    /*new Vue  实例
+
+     vm.$data === data  实例属性*/
+
+</script>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<div id="app"  class="static" :class="{ active: isActive, 'text-danger': hasError }">
+
+dddd
+</div>
+
+</body>
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isActive: false,
+            hasError: true
+        }
+    })
+
+
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <!--遍历list-->
+    <ul>
+        <li v-for="item in list">
+            {{item.value}}
+        </li>
+    </ul>
+
+    <!--遍历对象-->
+    <ul v-for-object>
+        <li v-for="(value,key,index) in obi">
+            {{value}}--{{key}}--{{index}}
+        </li>
+    </ul>
+
+</div>
+
+</body>
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            list: [{value: 2}, {value: 3}, {value: 4}],
+            obi: {
+                age: 1,
+                name: 'zzr',
+                sex: '男'
+            }
+        }
+    })
+
+    /*1.key 属性：vue会尽可能的复用组件，当设置不同的key时，就会清空组件。否则会复用组件
+    * 2.不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display。
+    * */
+
+
+/*这个还要在研究下  一个组件的 v-for*/
+
+</script>
+
+</html>

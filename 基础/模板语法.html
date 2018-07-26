@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<div id="app" v-once>{{obj.a}}</div>
+<!--将2222替换成span-->
+<div class="app1" v-html="rawHtml">2222</div>
+
+
+
+</body>
+<script type="text/javascript">
+
+    var obj = {a: 1}
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            data: obj
+        },
+        beforeCreate: function () {
+            console.log("beforecreated")
+        },
+        created: function () {/*生命周期1*/
+            console.log("created")
+
+        },
+        beforeMount() {
+            console.log("beforeMount")
+        },
+        mounted() {/*这是es6写法*/
+            /*生命周期2*/
+            console.log("mounted")
+        },
+        beforeUpdate:function () {
+            console.log("beforeUpdate")
+        },
+        updated:function () {
+            console.log("updated")
+        },
+        beforeDestory:function () {
+            console.log("beforeDestory")
+        },
+        destoryed:function () {
+            console.log("destoryed")
+        }
+
+    })
+
+    new Vue({
+        el: '.app1',
+        data:{
+            rawHtml:'<span style="color: red">这应该是红色的字</span>'
+        }
+    })
+
+    /*1.v-once  这个指令使得值不在变化
+    * 2.v-html  如果是html元素将正确解析，否则会将元素当成文本展示 不会替换当前元素，而是作为值来填充
+    * 3.Mustache 语法，即双大括号不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令：v-bind可省略
+    * html原有的属性要使用v-bind*/
+
+</script>
+
+</html>
