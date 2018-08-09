@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<div id="app">
+{{title1}}
+</div>
+
+</body>
+<script type="text/javascript">
+
+
+    new Vue({
+        el: '#app',
+        data: {
+            props: [{id: 1, title: '1'}, {id: 2, title: '4'}, {id: 3, title: '3'}],
+            postFontSize: 1,
+            title1: "ceshi"
+        }
+    })
+
+</script>
+
+</html>

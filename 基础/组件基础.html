@@ -9,10 +9,20 @@
 
 <div id="app">
 
-    <button-counter :title="title1"/>
-    <br/>
+    <!--<button-counter :title="title1" :style="{fontSize:postFontSize+'em'}"
+                    @enlarge-text="postFontSize += $event"/>
+    <br/>-->
+    <!--<custom-input :title="title1"></custom-input>-->
 
-    <!--<button-counter v-for="item of props" :title="item.title" :key="item.id"/>-->
+    <input v-model="title1">
+    <!--<input
+  v-bind:value="title1"
+  v-on:input="title1 = $event.target.value"
+>-->
+
+    <custom-input v-model="title1"></custom-input>
+
+    <!-- <button-counter v-for="item of props" :title="item.title" :key="item.id"/>-->
 
 </div>
 
@@ -26,18 +36,26 @@
                 count: 0
             }
         },
-        template: '<button @click="count++">点击了{{count}}次数===={{title}}</button>'
+        template: `<div><h3>{{title}}</h3></button>
+        <button @click="$emit('enlarge-text',2)">点击了{{count}}次数===={{title}}</button></div>`
 
     })
 
 
+    Vue.component("custom-input", {
+        props: ['value'],
+        template: `
+                <input :value="value" @input="$emit('input',$event.target.value)"/>
+        `
+    })
 
 
     new Vue({
         el: '#app',
-        data:{
-            props:[{id:1,title:'1'},{id:2,title:'4'},{id:3,title:'3'}],
-            title1:"ceshi"
+        data: {
+            props: [{id: 1, title: '1'}, {id: 2, title: '4'}, {id: 3, title: '3'}],
+            postFontSize: 1,
+            title1: "ceshi"
         }
     })
 
